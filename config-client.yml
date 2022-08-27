@@ -1,11 +1,33 @@
-server:
-  port: 3344
 spring:
+  profiles:
+    active: dev
+	
+---
+server:
+  port: 8201
+#spring的配置
+spring:
+  profiles: dev
   application:
-    name: spring-cloud-config-server-3344
-  #连接远程仓库
-  cloud:
-    config:
-      server:
-        git:
-          uri: https://github.com/Lengxiaochi/springcloudlearn.git  #https
+    name: springcloud-provider-dept
+
+#Eureka的配置，服务注册到哪里
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka/
+
+--- 
+server:
+  poet: 8202
+#spring的配置
+spring:
+  profiles: test
+  application:
+    name: springcloud-provider-dept
+
+#Eureka的配置，服务注册到哪里
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka/
